@@ -15,7 +15,7 @@ void printErr(double f, double fN, double x) {
     double errAss = fabs(fN - f);
     double errRel = fabs(errAss / f);
 
-    cout << "f(" << x << ") = " << f << "\t\terrAss = " << errAss << endl;
+    cout << "f(" << x << ")  = " << f << "\t\terrAss = " << errAss << endl;
     cout << "fN(" << x << ") = " << fN << " \t\terrRel = " << errRel << endl;
     cout << endl;
 }
@@ -24,9 +24,9 @@ int main() {
     double points[] = {0.5, 30, -0.5, -30};
     unsigned int Ns[] = {3, 10, 50, 100, 150};
 
-    for (unsigned int N : Ns) {
-        cout << "N: " << N << endl;
-        for (double x : points) {
+    for (double x : points) {
+        for (unsigned int N : Ns) {
+            cout << "N: " << N << endl;
             double f = exp(x);
             double fN = function(x, N);
         
