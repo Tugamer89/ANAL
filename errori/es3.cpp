@@ -11,7 +11,7 @@ int main() {
 
     while (fOne + powf(2, -d) > 1.0)
         ++d;
-    float fEps = powf(2, -(d-1));
+    float fEps = powf(2, -(--d));
 
     cout << "FLOAT" << endl;
     cout << "eps = " << fEps << endl;
@@ -21,7 +21,7 @@ int main() {
     d = 1;
     while (dOne + pow(2, -d) > 1.0)
         ++d;
-    double dEps = pow(2, -(d-1));
+    double dEps = pow(2, -(--d));
 
     cout << "DOUBLE" << endl;
     cout << "eps = " << dEps << endl;
