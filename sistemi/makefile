@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS= -O3 \
 		--std=c++14 \
-		#-DSINGLE
+		-DSINGLE
 BIN_DIR=bin
 
 ES1_OBJS=$(BIN_DIR)/es1.o

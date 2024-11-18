@@ -12,17 +12,6 @@ Matrix::Matrix(ssize_t n, ssize_t m) {
     }
 }
 
-Matrix Matrix::operator=(const Matrix& other) {
-    n = other.n;
-    m = other.m;
-    data = new Precision*[n];
-    for (ssize_t i = 0; i < n; i++) {
-        data[i] = new Precision[m];
-        for (ssize_t j = 0; j < m; j++)
-            data[i][j] = other.data[i][j];
-    }
-    return *this;
-}
 
 Matrix Matrix::operator+(const Matrix& other) {
     if  (n != other.n || m != other.m)
@@ -64,12 +53,6 @@ Precision Matrix::infiniteNorm() {
     return maxRow;
 }
 
-void Matrix::swap_rows(ssize_t a, ssize_t b) {
-    Precision* tmp = data[a];
-    data[a] = data[b];
-    data[b] = tmp;
-}
-
 void LinearSystem::computeB() {
     // Moltiplicare A per un vettore di soli 1 e` uguale a sommare ogni elemento della stessa riga
     b = Matrix(A.n, 1);
@@ -100,8 +83,8 @@ void LinearSystem::computeX(Type tp) {
                 max_pivot = i;
 
         if (max_pivot != k) {
-            real_A.swap_rows(k, max_pivot);
-            real_b.swap_rows(k, max_pivot);
+            std::swap(real_A.data[k], real_A.data[max_pivot]);
+            std::swap(real_b.data[k], real_b.data[max_pivot]);
         }
 
         Precision pivot = real_A.data[k][k];

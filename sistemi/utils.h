@@ -16,15 +16,11 @@ public:
     Matrix() = default;
     Matrix(ssize_t n, ssize_t m);
 
-    Matrix operator=(const Matrix& other);
     Matrix operator+(const Matrix& other);
     friend Matrix operator*(Precision scalar, const Matrix& matrix);
 
     void print();
     Precision infiniteNorm();
-    void swap_rows(ssize_t a, ssize_t b);
-
-private:
 };
 
 class LinearSystem {
@@ -37,7 +33,6 @@ public:
 
     void computeB();
     void computeX(Type tp = Type::NORMAL);
-private:
 };
 
 void initializeMatrixes(LinearSystem& A1, LinearSystem& A2, LinearSystem& P, LinearSystem& T);
