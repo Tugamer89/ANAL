@@ -4,10 +4,10 @@ CFLAGS= -O3 \
 		-DSINGLE
 BIN_DIR=bin
 
-ES1_OBJS=$(BIN_DIR)/es1.o
-ES2_OBJS=$(BIN_DIR)/es2.o
-ES3_OBJS=$(BIN_DIR)/es3.o
-UTILS_OBJS=$(BIN_DIR)/utils.o
+ES1_OBJ=$(BIN_DIR)/es1.o
+ES2_OBJ=$(BIN_DIR)/es2.o
+ES3_OBJ=$(BIN_DIR)/es3.o
+UTILS_OBJ=$(BIN_DIR)/utils.o
 
 EXE1=$(BIN_DIR)/es1.out
 EXE2=$(BIN_DIR)/es2.out
@@ -17,26 +17,26 @@ EXE3=$(BIN_DIR)/es3.out
 
 all: $(EXE1) $(EXE2) $(EXE3)
 
-$(EXE1): $(ES1_OBJS) $(UTILS_OBJS) | $(BIN_DIR)
+$(EXE1): $(ES1_OBJ) $(UTILS_OBJ) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(EXE2): $(ES2_OBJS) $(UTILS_OBJS) | $(BIN_DIR)
+$(EXE2): $(ES2_OBJ) $(UTILS_OBJ) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(EXE3): $(ES3_OBJS) $(UTILS_OBJS) | $(BIN_DIR)
+$(EXE3): $(ES3_OBJ) $(UTILS_OBJ) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
 
-$(UTILS_OBJS): utils.cpp utils.h | $(BIN_DIR)
+$(UTILS_OBJ): utils.cpp utils.h | $(BIN_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(ES1_OBJS): es1.cpp utils.h | $(BIN_DIR)
+$(ES1_OBJ): es1.cpp utils.h | $(BIN_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(ES2_OBJS): es2.cpp utils.h | $(BIN_DIR)
+$(ES2_OBJ): es2.cpp utils.h | $(BIN_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(ES3_OBJS): es3.cpp utils.h | $(BIN_DIR)
+$(ES3_OBJ): es3.cpp utils.h | $(BIN_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 
