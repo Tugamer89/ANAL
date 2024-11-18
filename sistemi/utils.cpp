@@ -79,7 +79,7 @@ void LinearSystem::computeX(Type tp) {
         ssize_t max_pivot = k;
 
         for (ssize_t i = k+1; i < n; ++i)
-            if (fabs(real_A.data[i][k]) > fabs(real_A.data[max_pivot][k]))
+            if (abs(real_A.data[i][k]) > abs(real_A.data[max_pivot][k]))
                 max_pivot = i;
 
         if (max_pivot != k) {
