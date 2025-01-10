@@ -9,8 +9,6 @@ m = 10*(d0+1) + d1;
 
 x = (1:m)' / m;
 A = [ones(m, 1), x, x.^2];
-disp("A = ");
-disp(A);
 
     % PARTE 1
 [UA, sA, VA] = svd(A);
@@ -19,17 +17,21 @@ AT = A';
 
 disp("ΣA - ΣAT = ");
 disp(diag(sA) - diag(sAT));
+disp("UA - VAT = ");
+disp(UA - VAT);
+disp("VA - UAT = ");
+disp(VA - UAT);
 
     % PARTE 2
-aValAAT = eig(A*AT);
-aValATA = eig(AT*A);
+aValAAT = sort(eig(A*AT), "descend");
+aValATA = sort(eig(AT*A), "descend");
 
 disp("ΣA - ΛAAT = ");
-disp(sA - aValAAT);
+disp([diag(sA.^2); zeros(m-width(sA), 1)] - aValAAT);
 disp("ΣA - ΛATA = ");
-disp(diag(sA) - aValATA);
+disp(diag(sA.^2) - aValATA);
 
-    % PRTE 3
+    % PARTE 3
 ortA = orth(A);
 ortAT = orth(AT);
 
@@ -39,10 +41,15 @@ disp("Im(AT) - UAT = ");
 disp(ortAT - UAT);
 
     % PARTE 4
-nullA = null(A);
-nullAT = null(AT);
+ker_nullA = null(A);
+ker_nullAT = null(AT);
 
-disp("nullA - VA = ");
-disp(nullA' * VA);
-disp("nullAT - VAT = ");
-disp(nullAT' * VAT);
+tol = max(size(A)) * eps(max(diag(sA)));
+rank = sum(diag(sA) > tol);
+kernel_svdA = VA(:, rank+1:end);
+kernel_svdAT = VAT(:, rank+1:end);
+
+disp("ker_nullA - kernel_svdA = ");
+disp(ker_nullA - kernel_svdA);
+disp("ker_nullAT - kernel_svdAT = ");
+disp(ker_nullAT - kernel_svdAT);
