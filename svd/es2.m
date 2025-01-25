@@ -2,6 +2,7 @@
 clear
 clc
 disp("ES 2");
+format longE;
 
 minN = 2;
 maxN = 10;
@@ -55,6 +56,10 @@ for n = minN:maxN
     disp("Autovalori = ");
     disp(aVal);
 
+        % PARTE 4
+    r = rank(B);
+    disp("Rango = " + r);
+
     fprintf("\n\n");
 end
 
@@ -79,3 +84,5 @@ xlabel('n');
 ylabel('Condizionamento');
 title('Andamento del condizionamento');
 grid on;
+
+format default;
