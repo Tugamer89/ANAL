@@ -10,7 +10,7 @@ m = 10*(d0+1) + d1;
 x = (1:m)' / m;
 A = [ones(m, 1), x, x.^2];
 
-    % PARTE 1
+%% PARTE 1
 [UA, sA, VA] = svd(A);
 AT = A';
 [UAT, sAT, VAT] = svd(AT);
@@ -22,7 +22,7 @@ disp(UA - VAT);
 disp("VA - UAT = ");
 disp(VA - UAT);
 
-    % PARTE 2
+%% PARTE 2
 aValAAT = sort(eig(A*AT), "descend");
 aValATA = sort(eig(AT*A), "descend");
 
@@ -31,7 +31,7 @@ disp([diag(sA.^2); zeros(m-width(sA), 1)] - aValAAT);
 disp("ΣA - ΛATA = ");
 disp(diag(sA.^2) - aValATA);
 
-    % PARTE 3
+%% PARTE 3
 ortA = orth(A);
 ortAT = orth(AT);
 
@@ -40,7 +40,7 @@ disp(ortA - UA(:, 1:3));
 disp("Im(AT) - UAT = ");
 disp(ortAT - UAT);
 
-    % PARTE 4
+%% PARTE 4
 ker_nullA = null(A);
 ker_nullAT = null(AT);
 

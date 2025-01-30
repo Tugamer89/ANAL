@@ -29,13 +29,13 @@ for n = minN:maxN
     disp("B = ");
     disp(B);
     
-        % PARTE 1
+    %% PARTE 1
     [U, S, V] = svd(B);
     sValues = diag(S);
     disp("S = ");
     disp(sValues);
     
-        % PARTE 2
+    %% PARTE 2
     maxS = max(sValues);
     minS = min(sValues);
     condB = maxS / minS;
@@ -50,13 +50,13 @@ for n = minN:maxN
     minS_values(index) = minS;
     condB_values(index) = condB;
 
-        % PARTE 3
+    %% PARTE 3
     B(n, 1) = B(n, 1) + -2^(2 - n);
     aVal = eig(B);
     disp("Autovalori = ");
     disp(aVal);
 
-        % PARTE 4
+    %% PARTE 4
     r = rank(B);
     disp("Rango = " + r);
 
