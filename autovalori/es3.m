@@ -38,9 +38,10 @@ end
 
 
 eig_vals = eig(A);
+p = 100;
 
-lambda_inv1 = inversePowerMethod(A, 100, v1, maxIter);
-lambda_inv2 = inversePowerMethod(A, 100, v2, maxIter);
+lambda_inv1 = inversePowerMethod(A, p, v1, maxIter);
+lambda_inv2 = inversePowerMethod(A, p, v2, maxIter);
 
 
 fprintf("\nAutovalore stimato con metodo inverso (v1): %.6E\n", lambda_inv1);
@@ -55,5 +56,5 @@ fprintf("Differenza metodo potenze (v2): |%.6E - %.6E| = %.6E\n", max(abs(eig_va
 fprintf("Differenza metodo potenze inverse (v1): |%.6E - %.6E| = %.6E\n", max(abs(eig_vals)), lambda_inv1, abs(max(abs(eig_vals)) - lambda_inv1));
 fprintf("Differenza metodo potenze inverse (v2): |%.6E - %.6E| = %.6E\n", max(abs(eig_vals)), lambda_inv2, abs(max(abs(eig_vals)) - lambda_inv2));
 
-fprintf("\nVelocità di convergenza metodo delle potenze = %.6E\n", abs(max(lambda1, lambda2)/min(lambda1, lambda2))^maxIter)
-fprintf("Velocità di convergenza metodo delle potenze inverse = %.6E\n", abs(max(lambda_inv1, lambda_inv2)/min(lambda_inv1, lambda_inv2))^maxIter)
+fprintf("\nVelocità di convergenza metodo delle potenze = %.6E\n", abs(min(lambda1, lambda2)/max(lambda1, lambda2))^maxIter)
+fprintf("Velocità di convergenza metodo delle potenze inverse = %.6E\n", abs(max(lambda_inv1-p, lambda_inv2-p)/min(lambda_inv1-p, lambda_inv2-p))^maxIter)
