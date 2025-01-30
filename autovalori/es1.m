@@ -7,7 +7,7 @@ d0 = 6;
 d1 = 1;
 n = 10*(d1+1) + d0;
 
-    % PARTE 1
+%% PARTE 1
 A = diag(ones(1, n-1), 1) + eye(n);
 E = zeros(n);
 E(n, 1) = 2^(-n);
@@ -25,7 +25,7 @@ disp("norm(VB-VA) = " + nV1);
 disp("VB - VA = ");
 disp(diff);
 
-    % PARTE 2
+%% PARTE 2
 A2 = A' * A;
 B2 = B' * B;
 

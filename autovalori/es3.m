@@ -9,7 +9,7 @@ A = [ 1  -1  2;
 
 maxIter = 2000;
 
-    % PARTE 1
+%% PARTE 1
 function lambda = powerMethod(A, v0, maxIter)
     v = v0 / norm(v0);
     
@@ -29,7 +29,7 @@ lambda2 = powerMethod(A, v2, maxIter);
 fprintf("\nAutovalore stimato (v1): %.6E\n", lambda1);
 fprintf("Autovalore stimato (v2): %.6E\n", lambda2);
 
-    % PARTE 2
+%% PARTE 2
 function lambda = inversePowerMethod(A, p, v0, maxIter)
     B = inv(A - p*eye(size(A)));
     mi = powerMethod(B, v0, maxIter);
